@@ -1,24 +1,47 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts"
 
-const RESEND_API_KEY = "re_Jzvi2SQN_MMoAqY824ZoJRmU98dKShg1n"
+// 1. Define the headers for CORS
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*', // You can change '*' to your vercel URL for extra security later
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
 
 serve(async (req) => {
-  const { to, subject, html } = await req.json()
+  // 2. Handle the "Preflight" request from the browser
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
+  }
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${RESEND_API_KEY}`,
-    },
-    body: JSON.stringify({
-      from: "SM Group <cyberhacker64@gmail.com>", // Change this after domain verification
-      to,
-      subject,
-      html,
-    }),
-  })
+  try {
+    const { to, subject, html } = await req.json()
+    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY")
 
-  const data = await res.json()
-  return new Response(JSON.stringify(data), { headers: { "Content-Type": "application/json" } })
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: "SM Group <onboarding@resend.dev>",
+        to,
+        subject,
+        html,
+      }),
+    })
+
+    const data = await res.json()
+
+    // 3. Return the response WITH the CORS headers
+    return new Response(JSON.stringify(data), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      status: 200,
+    })
+
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      status: 400,
+    })
+  }
 })
