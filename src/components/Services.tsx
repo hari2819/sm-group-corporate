@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState} from "react";
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { MagnifierIcon, MedalIcon, ChartIcon, WalletIcon, LightBulbIcon } from "./Icons";

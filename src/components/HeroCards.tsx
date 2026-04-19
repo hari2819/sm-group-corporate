@@ -1,6 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Badge } from "./ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button} from "@/components/ui/button";
 import React from "react";
 import {
   Card,
@@ -10,9 +9,8 @@ import {
   CardTitle,
   CardFooter,
 } from "@/components/ui/card";
-import { Check, Linkedin, MedalIcon, WalletIcon } from "lucide-react";
+import { Check, MedalIcon, WalletIcon } from "lucide-react";
 import { ChartIcon, HRIcon, LightBulbIcon, MagnifierIcon } from "./Icons";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 const services = [
   {
     title: "HR & Headhunting",
