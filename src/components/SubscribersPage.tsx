@@ -7,6 +7,8 @@ import { Input } from "./ui/input";
 import { Checkbox } from "@/components/ui/checkbox"; // Ensure you have: npx shadcn-ui@latest add checkbox
 import { ChevronLeft, Send, Mail} from "lucide-react";
 import { Textarea } from "./ui/textarea"; // Ensure you have: npx shadcn-ui@latest add textarea
+import { X, UserCheck } from "lucide-react"; // Add X for removing tags
+import { Badge } from "@/components/ui/badge";
 
 export const SubscribersPage = () => {
   const [subscribers, setSubscribers] = useState<{ Email: string; created_at: string }[]>([]);
@@ -19,6 +21,10 @@ export const SubscribersPage = () => {
   useEffect(() => {
     fetchSubscribers();
   }, []);
+
+  const removeEmail = (emailToRemove: string) => {
+  setSelectedEmails(selectedEmails.filter(email => email !== emailToRemove));
+};
 
   const fetchSubscribers = async () => {
     const { data } = await supabase.from("Email_Subscriber").select("*").order("created_at", { ascending: false });
@@ -132,6 +138,40 @@ export const SubscribersPage = () => {
               </h2>
               
               <div className="space-y-4">
+
+                <div className="space-y-1">
+          <label className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1">
+            <UserCheck size={12} /> To: ({selectedEmails.length})
+          </label>
+          <div className="min-h-[60px] p-2 bg-slate-50 border border-slate-200 rounded-md flex flex-wrap gap-2 max-h-[150px] overflow-y-auto">
+            {selectedEmails.length > 0 ? (
+              selectedEmails.map((email) => (
+                <Badge 
+                  key={email} 
+                  variant="secondary" 
+                  className="bg-[#172554] text-white hover:bg-red-500 gap-1 pr-1 transition-colors cursor-pointer group"
+                  onClick={() => removeEmail(email)}
+                >
+                  <span className="text-[10px]">{email}</span>
+                  <X size={12} className="group-hover:scale-125 transition-transform" />
+                </Badge>
+              ))
+            ) : (
+              <p className="text-xs text-slate-400 italic py-2 px-1">No recipients selected from the list...</p>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <label className="text-xs font-bold text-slate-500 uppercase">Subject</label>
+          <Input 
+            placeholder="E.g. Monthly Corporate Update" 
+            value={emailSubject}
+            onChange={(e) => setEmailSubject(e.target.value)}
+            className="mt-1"
+          />
+        </div>
+        
                 <div>
                   <label className="text-xs font-bold text-slate-500 uppercase">Subject</label>
                   <Input 
