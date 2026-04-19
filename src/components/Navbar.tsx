@@ -52,6 +52,10 @@ const routeList: RouteProps[] = [
     href:"it",
     label:"Engineering & IT",
   },
+  {
+    href:"#newsletter",
+    label:"Subscribe",
+  },
 ];
 
 export const Navbar = () => {
@@ -146,8 +150,18 @@ export const Navbar = () => {
               Contact Us
             </a>
 
+            <a
+              href="/admin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`border ${buttonVariants({ variant: "secondary" })}`}
+            >
+              Admin Login
+            </a>
+
             {/* <ModeToggle /> */}
           </div>
+          
         </NavigationMenuList>
       </NavigationMenu>
     </header>

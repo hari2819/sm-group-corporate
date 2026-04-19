@@ -1,12 +1,39 @@
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { supabase } from "@/SupabaseClient";
 
 export const Newsletter = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Subscribed to Corporate Insights!");
-    // TODO: Connect this to an email marketing service later (like Mailchimp or Resend)
-  };
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  
+  // 1. CAPTURE THE FORM IMMEDIATELY
+  const currentForm = e.currentTarget; 
+  const formData = new FormData(currentForm);
+  const emailValue = formData.get("email") as string;
+
+  try {
+    const { error } = await supabase
+      .from("Email_Subscriber")
+      .insert([{ Email: emailValue }]); // Ensure 'Email' matches your DB column case
+
+    if (error) {
+      throw error;
+    }
+
+    // 2. SUCCESS PATH
+    alert("Success! You have been subscribed.");
+    
+    // 3. CLEAR THE INPUT
+    if (currentForm) {
+      currentForm.reset(); 
+    }
+
+  } catch (err: any) {
+    console.error("Subscription Error:", err.message);
+    alert("Error: " + err.message);
+  }
+};
+  
 
   return (
     <section id="newsletter">
@@ -28,6 +55,7 @@ export const Newsletter = () => {
           onSubmit={handleSubmit}
         >
           <Input
+            name="email"
             placeholder="Enter your corporate email address"
             className="bg-muted/50 dark:bg-muted/80 border-primary/20 focus-visible:ring-[#61DAFB]"
             aria-label="email"
