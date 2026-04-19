@@ -25,36 +25,24 @@ interface RouteProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "#corporate",
-    label: "Corporate",
+    href: "#services-showcase",
+    label: "Our Services",
   },
   {
-    href: "#hr",
-    label: "HHeadhunting",
+    href: "#about",
+    label: "About Us",
   },
   {
-    href: "#finance",
-    label: "Finance & Insurance",
+    href: "#footer",
+    label: "Contact Us",
   },
   {
-    href: "#marketing",
-    label: "Sales & Marketing",
+    href: "#services",
+    label: "Features",
   },
   {
-    href: "#education",
-    label: "Educational",
-  },
-  {
-    href:"tax",
-    label:"Accounting & Tax",
-  },
-  {
-    href:"it",
-    label:"Engineering & IT",
-  },
-  {
-    href:"#newsletter",
-    label:"Subscribe",
+    href: "#newsletter",
+    label: "Subscribe",
   },
 ];
 
@@ -110,13 +98,6 @@ export const Navbar = () => {
                     </a>
                   ))}
                   <a
-              href="#footer"
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
-            >
-              <HRIcon />
-              Contact Us
-            </a>
-                  <a
                     rel="noreferrer noopener"
                     href="/admin"
                     target="_blank"
@@ -150,14 +131,7 @@ export const Navbar = () => {
           </nav>
 
           <div className="hidden md:flex gap-2">
-            <a
-              href="#footer"
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
-            >
-              <HRIcon />
-              Contact Us
-            </a>
-
+          
             <a
               href="/admin"
               target="_blank"
@@ -169,7 +143,7 @@ export const Navbar = () => {
 
             {/* <ModeToggle /> */}
           </div>
-          
+
         </NavigationMenuList>
       </NavigationMenu>
     </header>
