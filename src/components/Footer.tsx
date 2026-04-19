@@ -1,166 +1,103 @@
-import { LogoIcon } from "./Icons";
+import smLogo from "../assets/main_logo.png"; // Make sure this path is correct for your logo!
 
 export const Footer = () => {
   return (
-    <footer id="footer">
-      <hr className="w-11/12 mx-auto" />
+    <footer id="footer" className="bg-muted/20">
+      <hr className="w-11/12 mx-auto border-primary/10" />
 
-      <section className="container py-20 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-12 gap-y-8">
+      {/* Adjusted grid to xl:grid-cols-5 since we removed Platforms */}
+      <section className="container py-20 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-x-12 gap-y-8">
+        
+        {/* Logo and Brand Brief */}
         <div className="col-span-full xl:col-span-2">
           <a
             rel="noreferrer noopener"
             href="/"
-            className="font-bold text-xl flex"
+            className="font-bold text-2xl flex items-center gap-4"
           >
-            <LogoIcon />
-            ShadcnUI/React
+            {/* Made the logo significantly larger */}
+            <img 
+              src={smLogo} 
+              alt="SM Group Logo" 
+              className="w-24 object-contain drop-shadow-md" 
+            />
+            <span className="text-[#172554] dark:text-white">SM Group</span>
           </a>
+          <p className="mt-6 text-muted-foreground w-5/6 leading-relaxed">
+            Premier corporate consultancy delivering durable and highly specialized results through our Conceive, Create, Complete methodology.
+          </p>
         </div>
 
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Follow US</h3>
+        {/* Dynamic Page Links */}
+        <div className="flex flex-col gap-3">
+          <h3 className="font-bold text-lg text-[#172554] dark:text-[#61DAFB]">Company</h3>
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Github
+            <a href="#about" className="opacity-70 hover:opacity-100 hover:text-[#61DAFB] transition-all">
+              About Us
             </a>
           </div>
-
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Twitter
+            <a href="#services" className="opacity-70 hover:opacity-100 hover:text-[#61DAFB] transition-all">
+              Business Clusters
             </a>
           </div>
-
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Dribbble
+            <a href="#howItWorks" className="opacity-70 hover:opacity-100 hover:text-[#61DAFB] transition-all">
+              Our Methodology
             </a>
           </div>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Platforms</h3>
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Web
+            <a href="#engagement" className="opacity-70 hover:opacity-100 hover:text-[#61DAFB] transition-all">
+              Engagement Models
             </a>
           </div>
-
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Mobile
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Desktop
+            <a href="#team" className="opacity-70 hover:opacity-100 hover:text-[#61DAFB] transition-all">
+              Leadership
             </a>
           </div>
         </div>
 
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">About</h3>
+        {/* Social Links */}
+        <div className="flex flex-col gap-3">
+          <h3 className="font-bold text-lg text-[#172554] dark:text-[#61DAFB]">Follow Us</h3>
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Features
+            <a rel="noreferrer noopener" href="#" className="opacity-70 hover:opacity-100 hover:text-[#61DAFB] transition-all">
+              LinkedIn
             </a>
           </div>
-
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Pricing
+            <a rel="noreferrer noopener" href="#" className="opacity-70 hover:opacity-100 hover:text-[#61DAFB] transition-all">
+              Twitter / X
             </a>
           </div>
-
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              FAQ
+            <a rel="noreferrer noopener" href="#" className="opacity-70 hover:opacity-100 hover:text-[#61DAFB] transition-all">
+              Instagram
             </a>
           </div>
         </div>
 
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Community</h3>
+        {/* Community */}
+        <div className="flex flex-col gap-3">
+          <h3 className="font-bold text-lg text-[#172554] dark:text-[#61DAFB]">Community</h3>
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Youtube
+            <a rel="noreferrer noopener" href="#" className="opacity-70 hover:opacity-100 hover:text-[#61DAFB] transition-all">
+              YouTube
             </a>
           </div>
-
           <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Discord
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Twitch
+            <a rel="noreferrer noopener" href="#" className="opacity-70 hover:opacity-100 hover:text-[#61DAFB] transition-all">
+              Client Portal
             </a>
           </div>
         </div>
       </section>
 
-      <section className="container pb-14 text-center">
-        <h3>
-          &copy; 2024 Landing page made by{" "}
-          <a
-            rel="noreferrer noopener"
-            target="_blank"
-            href="https://www.linkedin.com/in/leopoldo-miranda/"
-            className="text-primary transition-all border-primary hover:border-b-2"
-          >
-            Leo Miranda
-          </a>
+      {/* Copyright Banner */}
+      <section className="container pb-10 text-center">
+        <h3 className="text-muted-foreground font-medium">
+          &copy; {new Date().getFullYear()} Landing page made by SweMa.org
         </h3>
       </section>
     </footer>

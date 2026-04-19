@@ -16,7 +16,7 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
-import { LogoIcon } from "./Icons";
+import { HRIcon, LogoIcon } from "./Icons";
 
 interface RouteProps {
   href: string;
@@ -25,20 +25,32 @@ interface RouteProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "#features",
-    label: "Features",
+    href: "#corporate",
+    label: "Corporate",
   },
   {
-    href: "#testimonials",
-    label: "Testimonials",
+    href: "#hr",
+    label: "HHeadhunting",
   },
   {
-    href: "#pricing",
-    label: "Pricing",
+    href: "#finance",
+    label: "Finance & Insurance",
   },
   {
-    href: "#faq",
-    label: "FAQ",
+    href: "#marketing",
+    label: "Sales & Marketing",
+  },
+  {
+    href: "#education",
+    label: "Educational",
+  },
+  {
+    href:"tax",
+    label:"Accounting & Tax",
+  },
+  {
+    href:"it",
+    label:"Engineering & IT",
   },
 ];
 
@@ -55,7 +67,6 @@ export const Navbar = () => {
               className="ml-2 font-bold text-xl flex"
             >
               <LogoIcon />
-              ShadcnUI/React
             </a>
           </NavigationMenuItem>
 
@@ -128,16 +139,14 @@ export const Navbar = () => {
 
           <div className="hidden md:flex gap-2">
             <a
-              rel="noreferrer noopener"
-              href="https://github.com/leoMirandaa/shadcn-landing-page.git"
-              target="_blank"
+              href="#footer"
               className={`border ${buttonVariants({ variant: "secondary" })}`}
             >
-              <GitHubLogoIcon className="mr-2 w-5 h-5" />
-              Github
+              <HRIcon />
+              Contact Us
             </a>
 
-            <ModeToggle />
+            {/* <ModeToggle /> */}
           </div>
         </NavigationMenuList>
       </NavigationMenu>

@@ -1,25 +1,14 @@
+import MainLogo from "@/lib/Images/main_logo.png";
+
 export const LogoIcon = () => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="lucide lucide-panels-top-left mr-2 w-6 h-6"
-    >
-      <rect
-        width="18"
-        height="18"
-        x="3"
-        y="3"
-        rx="2"
+    <div className="group flex list-none items-center space-x-6 mx-auto">
+      <img 
+        src={MainLogo} 
+        alt="SM Group Logo" 
+        className="me-2 h-8 w-auto object-contain" 
       />
-      <path d="M3 9h18" />
-      <path d="M9 21V9" />
-    </svg>
+    </div>
   );
 };
 
@@ -657,6 +646,32 @@ export const MagnifierIcon = () => {
         <path
           className="cls-1"
           d="M79.73,20.75c0,.15-.21.08-.56-.16a2.05,2.05,0,0,1-.42-.41c0-.11-.1-.22-.13-.3s.13-.53.15-.71a1.16,1.16,0,0,1,.19-.44c.17-.27.33-.57.5-.86a.43.43,0,0,1,.16-.17,1.33,1.33,0,0,0,.5-.63c0-.05,0-.08,0-.15s.34-.76.44-.81.44-.31.67-.45c0,0,0-.07.12-.05s.21,0,.27-.08a.73.73,0,0,1,.29-.19.9.9,0,0,1,.27,0,.87.87,0,0,1,.28.25c0,.09.15.15.24.23l.09.08a3,3,0,0,1,0,.78l-.17.37a3.3,3.3,0,0,0-.18.45c0,.05-.07.06-.12.09s-.23.64-.25.66-.1.26-.31.29c0,0,0,0-.06.06a2.22,2.22,0,0,1-.44.58,2.69,2.69,0,0,0-.19.32l-.07,0s-.06,0-.07.06a5.92,5.92,0,0,0-.51.76c0,.07-.39.24-.43.32S79.73,20.69,79.73,20.75Z"
+        />
+      </g>
+    </svg>
+  );
+};
+
+export const HRIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 128 128"
+      className="w-8 h-8 fill-primary"
+    >
+      <title>HR and Headhunting Icon</title>
+      <g id="HR_Icon">
+        {/* Head/Profile Circle */}
+        <path
+          d="M64,30a18,18,0,1,1-18,18A18,18,0,0,1,64,30Z"
+        />
+        {/* Shoulders/Torso */}
+        <path
+          d="M94,90a30,30,0,0,0-60,0,4,4,0,0,0,4,4H90A4,4,0,0,0,94,90Z"
+        />
+        {/* The Search/Magnifier Element representing Headhunting */}
+        <path
+          d="M102,98l-8.5-8.5a1,1,0,0,1,0-1.4l1.4-1.4a1,1,0,0,1,1.4,0l8.5,8.5a1,1,0,0,1,0,1.4l-1.4,1.4A1,1,0,0,1,102,98Z"
         />
       </g>
     </svg>

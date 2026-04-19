@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,64 +9,52 @@ import {
 } from "@/components/ui/card";
 import { Check } from "lucide-react";
 
-enum PopularPlanType {
-  NO = 0,
-  YES = 1,
-}
-
-interface PricingProps {
+interface EngagementPlanProps {
   title: string;
-  popular: PopularPlanType;
-  price: number;
+  popular: number;
   description: string;
   buttonText: string;
   benefitList: string[];
 }
 
-const pricingList: PricingProps[] = [
+const plans: EngagementPlanProps[] = [
   {
-    title: "Free",
+    title: "Strategic Audit",
     popular: 0,
-    price: 0,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Get Started",
+    description: "Ideal for businesses needing immediate, focused guidance on specific corporate challenges.",
+    buttonText: "Book a Consultation",
     benefitList: [
-      "1 Team member",
-      "2 GB Storage",
-      "Upto 4 pages",
-      "Community support",
-      "lorem ipsum dolor",
+      "In-depth Needs Analysis",
+      "Market Feasibility Studies",
+      "Initial Strategy Mapping",
+      "Compliance Health Check",
+      "One-time Advisory Session",
     ],
   },
   {
-    title: "Premium",
+    title: "Retainer Partnership",
     popular: 1,
-    price: 5,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Start Free Trial",
+    description: "Our most chosen model. Ongoing, dedicated support across multiple business clusters.",
+    buttonText: "Discuss Retainer",
     benefitList: [
-      "4 Team member",
-      "4 GB Storage",
-      "Upto 6 pages",
-      "Priority support",
-      "lorem ipsum dolor",
+      "Dedicated Account Manager",
+      "Ongoing Tax & Accounting",
+      "Active Talent Headhunting",
+      "Priority IT & Security Support",
+      "Continuous Strategy Refinement",
     ],
   },
   {
-    title: "Enterprise",
+    title: "Enterprise Transformation",
     popular: 0,
-    price: 40,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Contact US",
+    description: "End-to-end orchestration for massive corporate restructuring, M&A, or global scaling.",
+    buttonText: "Contact Partners",
     benefitList: [
-      "10 Team member",
-      "8 GB Storage",
-      "Upto 10 pages",
-      "Priority support",
-      "lorem ipsum dolor",
+      "Full Organizational Restructuring",
+      "Mergers & Acquisitions Advisory",
+      "International Business Expansion",
+      "C-Suite Executive Placements",
+      "Complete 360° Holistic Solutions",
     ],
   },
 ];
@@ -75,70 +62,70 @@ const pricingList: PricingProps[] = [
 export const Pricing = () => {
   return (
     <section
-      id="pricing"
+      id="engagement"
       className="container py-24 sm:py-32"
     >
       <h2 className="text-3xl md:text-4xl font-bold text-center">
-        Get
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          {" "}
-          Unlimited{" "}
+        Tailored{" "}
+        <span className="bg-gradient-to-r from-[#172554] to-[#61DAFB] text-transparent bg-clip-text">
+          Engagement Models
         </span>
-        Access
       </h2>
-      <h3 className="text-xl text-center text-muted-foreground pt-4 pb-8">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-        reiciendis.
+      <h3 className="text-xl text-center text-muted-foreground pt-4 pb-8 md:w-3/4 mx-auto">
+        We do not believe in one-size-fits-all. Choose the partnership structure that best aligns with your corporate objectives.
       </h3>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {pricingList.map((pricing: PricingProps) => (
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+        {plans.map((plan: EngagementPlanProps) => (
           <Card
-            key={pricing.title}
+            key={plan.title}
             className={
-              pricing.popular === PopularPlanType.YES
-                ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10"
-                : ""
+              plan.popular === 1
+                ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10 border-[1.5px] border-[#172554] dark:border-[#61DAFB] relative"
+                : "border-primary/10"
             }
           >
-            <CardHeader>
-              <CardTitle className="flex item-center justify-between">
-                {pricing.title}
-                {pricing.popular === PopularPlanType.YES ? (
-                  <Badge
-                    variant="secondary"
-                    className="text-sm text-primary"
-                  >
-                    Most popular
-                  </Badge>
-                ) : null}
-              </CardTitle>
-              <div>
-                <span className="text-3xl font-bold">${pricing.price}</span>
-                <span className="text-muted-foreground"> /month</span>
+            {plan.popular === 1 && (
+              <div className="absolute -top-4 left-0 right-0 flex justify-center">
+                <span className="bg-gradient-to-r from-[#172554] to-[#61DAFB] text-white text-sm font-semibold px-3 py-1 rounded-full shadow-md">
+                  Most Preferred
+                </span>
               </div>
+            )}
 
-              <CardDescription>{pricing.description}</CardDescription>
+            <CardHeader>
+              <CardTitle className="text-2xl text-[#172554] dark:text-white pb-2">
+                {plan.title}
+              </CardTitle>
+              <CardDescription className="pb-4 min-h-[60px] text-md">
+                {plan.description}
+              </CardDescription>
             </CardHeader>
 
             <CardContent>
-              <Button className="w-full">{pricing.buttonText}</Button>
-            </CardContent>
+              <Button 
+                variant={plan.popular === 1 ? "default" : "outline"}
+                className={`w-full mb-8 ${
+                  plan.popular === 1 
+                  ? "bg-[#172554] hover:bg-[#172554]/90 text-white" 
+                  : "border-[#172554] text-[#172554] hover:bg-[#172554]/10 dark:border-[#61DAFB] dark:text-[#61DAFB] dark:hover:bg-[#61DAFB]/10"
+                }`}
+              >
+                {plan.buttonText}
+              </Button>
 
-            <hr className="w-4/5 m-auto mb-4" />
-
-            <CardFooter className="flex">
               <div className="space-y-4">
-                {pricing.benefitList.map((benefit: string) => (
+                {plan.benefitList.map((benefit: string) => (
                   <span
                     key={benefit}
-                    className="flex"
+                    className="flex items-center"
                   >
-                    <Check className="text-green-500" />{" "}
-                    <h3 className="ml-2">{benefit}</h3>
+                    <Check className="text-[#61DAFB] mr-3" size={20} />
+                    <h3 className="text-muted-foreground">{benefit}</h3>
                   </span>
                 ))}
               </div>
-            </CardFooter>
+            </CardContent>
           </Card>
         ))}
       </div>

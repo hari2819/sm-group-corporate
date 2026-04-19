@@ -70,6 +70,14 @@
 /* *=========== Green theme =========== */
 @layer base {
   :root {
+    /* Navy Blue: #172554 */
+    --primary: 226 58% 21%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* You can also define your Gold here if you want */
+    --gold: 45 72% 52%; 
+    
+    --radius: 0.5rem;
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
@@ -93,6 +101,9 @@
   }
 
   .dark {
+    /* Optional: Slightly lighter navy for dark mode visibility */
+    --primary: 226 58% 30%;
+    --primary-foreground: 0 0% 100%;
     --background: 20 14.3% 4.1%;
     --foreground: 0 0% 95%;
     --card: 24 9.8% 10%;
