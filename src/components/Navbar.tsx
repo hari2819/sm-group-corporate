@@ -94,7 +94,7 @@ export const Navbar = () => {
               <SheetContent side={"left"}>
                 <SheetHeader>
                   <SheetTitle className="font-bold text-xl">
-                    Shadcn/React
+                    SM Group pvt Ltd
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
@@ -110,16 +110,24 @@ export const Navbar = () => {
                     </a>
                   ))}
                   <a
+              href="#footer"
+              className={`border ${buttonVariants({ variant: "secondary" })}`}
+            >
+              <HRIcon />
+              Contact Us
+            </a>
+                  <a
                     rel="noreferrer noopener"
-                    href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+                    href="/admin"
                     target="_blank"
                     className={`w-[110px] border ${buttonVariants({
                       variant: "secondary",
                     })}`}
                   >
                     <GitHubLogoIcon className="mr-2 w-5 h-5" />
-                    Github
+                    Admin Login
                   </a>
+
                 </nav>
               </SheetContent>
             </Sheet>
